@@ -1,6 +1,7 @@
 import streamlit as st
 import time
 import os
+from config import GROQ_API_KEY
 import requests
 import json
 
@@ -26,7 +27,7 @@ with open("prompt.txt", "r", encoding="utf-8") as file:
     SYSTEM_PROMPT = file.read().strip()
 
 # --- Groq API Setup ---
-GROQ_API_KEY = "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"
+GROQ_API_KEY = GROQ_API_KEY
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 GROQ_MODEL = "llama-3.3-70b-versatile"
 
