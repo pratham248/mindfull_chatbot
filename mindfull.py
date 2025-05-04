@@ -26,7 +26,7 @@ with open("prompt.txt", "r", encoding="utf-8") as file:
     SYSTEM_PROMPT = file.read().strip()
 
 # --- Groq API Setup ---
-GROQ_API_KEY = os.getenv("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")
+GROQ_API_KEY = "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"
 GROQ_API_URL = "https://api.groq.com/openai/v1/chat/completions"
 GROQ_MODEL = "llama-3.3-70b-versatile"
 
@@ -96,10 +96,11 @@ def get_response_from_groq(model_input):
     }
     response = requests.post(GROQ_API_URL, headers=headers, json=payload)
     result = response.json()
+    print(result)
     if "choices" not in result:
         return "Sorry, something went wrong."
     return result["choices"][0]["message"]["content"].strip()
-
+    
 # --- Main App Function ---
 def main():
     st.set_page_config(page_title=PAGE_TITLE, page_icon=PAGE_ICON)
